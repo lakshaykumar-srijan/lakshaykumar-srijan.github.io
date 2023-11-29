@@ -20,6 +20,7 @@ body {
     line-height: 50px;
     border-radius: 50%;
     cursor: pointer;
+    font-size: 10px;
   }
 
   #lines {
@@ -53,15 +54,33 @@ body {
 
   #item5 {
     top: 500px;
-    left: 800px;
+    left: 600px;
+  }
+
+  #item1_1 {
+    top: 600px;
+    left: 200px;
+  }
+
+  #item1_2 {
+    top: 600px;
+    left: 300px;
+  }
+
+  #item2_1 {
+    top: 600px;
+    left: 400px;
+  }
+
+  #item2_2 {
+    top: 600px;
+    left: 600px;
   }
 
 
   .menu {
-    position: fixed;
-    top: 0;
-    right: 0;
     padding: 20px;
+    text-align: right;
   }
   
   .menu ul {
