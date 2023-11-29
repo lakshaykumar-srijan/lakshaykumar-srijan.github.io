@@ -90,8 +90,18 @@ function handleItemHover(itemId) {
 }
 
 
-// Initial setup
+// Initial call
 drawLines();
+
+document.querySelectorAll(".graph-container .item").forEach(graphItem => {
+  graphItem.addEventListener("click", function () {
+    const itemId = this.id;
+    d3.selectAll(".item, .line").attr("class", "item").attr("stroke", "#3498db");
+    document.querySelector(`[data-target="${itemId}"]`).classList.add("selected");
+    handleItemHover(itemId);
+    updateMenuInteractions(itemId);
+  });
+});
 
 function updateMenuInteractions(itemId) {
     d3.selectAll(".menu li").attr("class", "");
