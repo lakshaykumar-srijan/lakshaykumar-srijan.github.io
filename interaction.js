@@ -1,10 +1,10 @@
 const connections = [{
     source: "item1",
-    target: ["item3", "item5", "item1_1", "item1_2"]
+    target: ["item3", "item5"]
   },
   {
     source: "item2",
-    target: ["item1", "item5", "item2_1", "item2_2"]
+    target: ["item1", "item5"]
   },
   {
     source: "item3",
