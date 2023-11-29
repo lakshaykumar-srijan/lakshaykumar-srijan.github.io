@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-sm-12">
+        <div class="graph-container">
+          <div class="item" id="item1">Item 1</div>
+          <div class="item" id="item2">Item 2</div>
+          <div class="item" id="item3">Item 3</div>
+          <div class="item" id="item4">Item 4</div>
+          <div class="item" id="item5">Item 5</div>
+          <div class="item" id="item1_1">Item 1_1</div>
+          <div class="item" id="item1_2">Item 1_2</div>
+          <div class="item" id="item2_1">Item 2_1</div>
+          <div class="item" id="item2_2">Item 2_2</div>
+          <!-- <svg id="lines" width="800" height="800" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z"/></svg> -->
+          <svg id="lines"></svg>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-12">
+        <div class="menu">
+          <h1>Tab</h1>
+          <ul>
+            <li data-target="item1">Item 1</li>
+            <li data-target="item2">Item 2</li>
+            <li data-target="item3">Item 3</li>
+            <li data-target="item4">Item 4</li>
+            <li data-target="item5">Item 5</li>
+          </ul>
+        </div>
+        <hr>
+        <div class="sub-menu menu" id="item1-submenu">
+            <ul>
+              <li data-target="item1_1">Item 1_1</li>
+              <li data-target="item1_2">Item 1_2</li>
+            </ul>
+          </div>
+          
+          <div class="sub-menu menu" id="item2-submenu">
+            <ul>
+              <li data-target="item2_1">Item 2_1</li>
+              <li data-target="item2_2">Item 2_2</li>
+            </ul>
+          </div>
+
+      </div>
+    </div>
+  </div>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="interaction-3.js"></script>
+</body>
+</html>
