@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .connected {
+    background-color: green;
+  }
+  .graph-container {
+    position: relative;
+  }
+  
+  .item {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  #lines {
+    width: 1000px;
+    height: 1000px;
+  }
+
+  .item.connected, .item.hovered {
+    background-color: green;
+  }
+
+  #item1 {
+    top: 100px;
+    left: 50px;
+  }
+  
+  #item2 {
+    top: 100px;
+    left: 250px;
+  }
+
+  #item3 {
+    top: 150px;
+    left: 400px;
+  }
+
+  #item4 {
+    top: 200px;
+    left: 500px;
+  }
+
+  #item5 {
+    top: 500px;
+    left: 800px;
+  }
+
+
+  .menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 20px;
+  }
+  
+  .menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .menu li {
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .menu li:hover {
+    color: #3498db;
+  }
+  
+
+  .item.selected {
+    stroke: #e74c3c; /* Change the stroke color for selected items */
+  }
