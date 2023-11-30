@@ -43,7 +43,7 @@ body.parent {
   }
 
   #item1 {
-    top: 100px;
+    top: 200px;
     left: 50px;
   }
   
@@ -53,37 +53,42 @@ body.parent {
   }
 
   #item3 {
-    top: 150px;
-    left: 400px;
+    top: 550px;
+    left: 200px;
   }
 
   #item4 {
     top: 200px;
-    left: 500px;
+    left: 300px;
   }
 
   #item5 {
-    top: 500px;
-    left: 600px;
+    top: 210px;
+    left: 390px;
   }
 
   #item1_1 {
+    top: 350px;
+    left: 0px;
+  }
+
+  #item4 {
     top: 600px;
-    left: 200px;
+    left: 80px;
   }
 
   #item1_2 {
     top: 600px;
-    left: 300px;
+    left: 450px;
   }
 
   #item2_1 {
-    top: 600px;
+    top: 380px;
     left: 400px;
   }
 
   #item2_2 {
-    top: 600px;
+    top: 400px;
     left: 600px;
   }
 

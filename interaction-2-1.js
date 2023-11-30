@@ -54,10 +54,20 @@ function drawLines() {
           const x2 = target.offsetLeft + target.clientWidth / 2;
           const y2 = target.offsetTop + target.clientHeight / 2;
 
-          const controlX = (x1 + x2) / 2;
-          const controlY = y1 - 50;
+          // Calculate control points dynamically based on relative positions
+          const controlX = (x1 + x2) / 2 + (y1 > y2 ? 20 : -20);
+          const controlY = (y1 + y2) / 2 + (x1 > x2 ? 20 : -20);
 
-          return `M${x1},${y1} Q${controlX},${controlY} ${x2},${y2}`;
+          // Calculate the radius of the arc
+          const radius = Math.sqrt(Math.pow(controlX - x1, 2) + Math.pow(controlY - y1, 2));
+
+          // Determine the sweep flag (whether the arc should be drawn in a positive or negative angle)
+          const sweepFlag = x1 < x2 ? 1 : 0;
+
+          // Construct the path using arcs
+          const path = `M${x1},${y1} A${radius},${radius} 0 0,${sweepFlag} ${x2},${y2}`;
+
+          return path;
         })
         .attr("stroke", "#B3DBCC")
         .attr("stroke-width", 2)
