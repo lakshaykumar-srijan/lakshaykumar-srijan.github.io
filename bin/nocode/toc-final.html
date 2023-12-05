@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>TOC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 body-wrapper">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis ultricies tortor. Aliquam laoreet ante sit amet elit lacinia maximus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec vitae nulla ut velit pharetra accumsan. Nulla nec odio magna. Praesent pellentesque suscipit tristique. Maecenas maximus metus lectus, vel congue felis dignissim ac. Vestibulum pellentesque neque sed dolor ornare gravida. Morbi eu quam id nisl gravida aliquam. Donec tristique elit a nisi ullamcorper convallis. Mauris ac feugiat ipsum, id pellentesque mauris. Aenean ante orci, rutrum sollicitudin odio at, fringilla sollicitudin elit. Sed suscipit dui magna, molestie pretium ipsum facilisis vitae. Ut tincidunt pharetra urna, et vehicula magna suscipit sed. Sed elementum urna non mauris tincidunt, ac vulputate tellus semper.
+
+Pellentesque lorem lacus, <h2>laoreet non vehicula quis</h2> facilisis id lectus. Sed finibus sed augue ut interdum. Quisque ipsum libero, scelerisque ornare laoreet at, interdum ac velit. Aliquam tempor bibendum elit at interdum. Nulla a est leo. Phasellus sit amet arcu non velit consequat vulputate vitae id massa. Suspendisse ultricies volutpat purus sed cursus. Fusce aliquam purus sed scelerisque tincidunt. Duis gravida lectus libero, at maximus lacus lobortis et. Suspendisse potenti. Maecenas in fringilla orci. Ut at lacinia leo. Ut laoreet blandit diam, non molestie nibh interdum non. Pellentesque non lorem eu purus gravida rhoncus ut id orci.
+
+Nulla fringilla erat eget convallis pharetra. <h2>Curabitur porttitor dolor</h2> ut ligula elementum, a iaculis turpis vulputate. Duis nec bibendum tortor. Curabitur volutpat leo vitae turpis congue, vitae aliquet erat efficitur. Suspendisse suscipit nunc enim, eu congue felis hendrerit eget. Ut convallis, ante ac varius suscipit, felis nibh molestie lorem, sed dapibus lorem nisl ut nunc. Maecenas cursus sem nec faucibus varius. Maecenas lacus risus, pharetra vel vestibulum blandit, lobortis ac felis. Maecenas scelerisque mattis lacus vel scelerisque. Curabitur ultricies scelerisque purus ac varius. Mauris fringilla sapien ac euismod placerat. Maecenas pretium ullamcorper metus, nec ultricies sapien luctus efficitur.
+
+Cras non elit quis dolor maximus condimentum. In sagittis tempor facilisis. Sed scelerisque nisi a justo porta dictum. Pellentesque ullamcorper ex lacus, pretium tristique leo vulputate vel. Duis at nibh semper risus placerat pretium. Sed cursus tellus non ligula hendrerit, id pellentesque leo mollis. Suspendisse et mauris commodo, feugiat quam ac, iaculis ipsum. Fusce in nunc leo. Praesent et erat id lorem mattis dapibus. Vivamus at molestie mauris. Nunc non leo blandit quam fringilla vulputate vitae vel justo. Suspendisse a quam elit. Sed vel mi et risus blandit gravida ut a lectus. Etiam luctus, diam in laoreet vestibulum, lacus orci fringilla urna, nec ullamcorper ex urna vitae sapien. Vestibulum auctor ipsum justo, vitae accumsan velit fringilla in.
+
+Suspendisse potenti. Cras non urna quam. Maecenas semper quam risus, <h2>in cursus lectus</h2> condimentum id. Sed imperdiet efficitur posuere. Proin lacinia semper sem, sed iaculis nibh lobortis a. Donec commodo augue eget posuere dapibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean ac felis a magna interdum bibendum. Curabitur ultrices varius venenatis. Nulla lacinia purus nec vulputate tincidunt. In facilisis ipsum metus, vitae semper enim laoreet eu.
+        </p>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="toc-container">
+          <h1>Table of Content</h1>
+          <p class="toc-container-list">
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+
+    // a decision maker function for creating table of content 
+    function tocDecsionMaker() {
+      var classValidator = $('.body-wrapper *').hasClass('make-this-headline');
+      if (classValidator) {
+        tocFromClass();
+      } else {
+        tocFromText();
+      }
+    }
+
+    // generates toc list from elements tagged with the class 
+    function tocFromClass() {
+      var elementWithClass = $('.body-wrapper .make-this-headline');
+      tocListGenerator(elementWithClass);
+    }
+
+    // generates toc list from h2 elements 
+    function tocFromText() {
+      var headingTags = $(".body-wrapper h2");
+      tocListGenerator(headingTags);
+    }
+
+    // generates toc list
+    function tocListGenerator(tocdata) {
+      $(tocdata).each(function( index ) {
+        var idGenerator = 'toc-selector-' + index;
+        var listContainer = $('.toc-container-list');
+        var headingText = $(this).text();
+        var linkGenerator = '<h2><a href="#' + idGenerator  + '">' + headingText + '</a></h2>';
+        $(this).attr('id', idGenerator);
+        $(listContainer).append(linkGenerator);
+      });
+    }
+
+    // Calling the function 
+    tocDecsionMaker();
+  </script>
+</body>
