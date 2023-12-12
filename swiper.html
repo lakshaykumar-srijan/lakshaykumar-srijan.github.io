@@ -102,34 +102,34 @@
             <div thumbsSlider="" class="swiper swiper-controller mySwiper">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
-                    <a class="m-select" href="#slide1"> Slide 1 </a>
+                    <h2 class="m-select"> Slide 1 </h2>
                   </div>
                   <div class="swiper-slide">
-                    <a class="m-select" href="#slide2"> Slide 2 </a>
+                    <h2 class="m-select"> Slide 2 </h2>
                   </div>
                   <div class="swiper-slide">
-                    <a class="m-select" href="#slide3"> Slide 3 </a>
+                    <h2 class="m-select"> Slide 3 </h2>
                   </div>
                   <div class="swiper-slide">
-                    <a class="m-select" href="#slide4"> Slide 4 </a>
+                    <h2 class="m-select"> Slide 4 </h2>
                   </div>
                   <div class="swiper-slide">
-                    <a class="m-select" href="#slide5"> Slide 5 </a>
+                    <h2 class="m-select"> Slide 5 </h2>
                   </div>
                   <div class="swiper-slide">
-                    <a class="m-select" href="#slide6"> Slide 6 </a>
+                    <h2 class="m-select"> Slide 6 </h2>
                   </div>
                   <div class="swiper-slide">
-                    <a class="m-select" href="#slide7"> Slide 7 </a>
+                    <h2 class="m-select"> Slide 7 </h2>
                   </div>
                   <div class="swiper-slide">
-                    <a class="m-select" href="#slide8"> Slide 8 </a>
+                    <h2 class="m-select"> Slide 8 </h2>
                   </div>
                   <div class="swiper-slide">
-                    <a class="m-select" href="#slide9"> Slide 9 </a>
+                    <h2 class="m-select"> Slide 9 </h2>
                   </div>
                   <div class="swiper-slide">
-                    <a class="m-select" href="#slide10"> Slide 10 </a>
+                    <h2 class="m-select"> Slide 10 </h2>
                   </div>
                 </div>
               </div>
@@ -144,31 +144,31 @@
                         <a href="#">Hello Link</a>
                     </div>
                   </div>
-                  <div class="swiper-slide" data-hash="slide2">
+                  <div class="swiper-slide">
                     <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
                   </div>
-                  <div class="swiper-slide" data-hash="slide3">
+                  <div class="swiper-slide" >
                     <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
                   </div>
-                  <div class="swiper-slide" data-hash="slide4">
+                  <div class="swiper-slide" >
                     <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
                   </div>
-                  <div class="swiper-slide" data-hash="slide5">
+                  <div class="swiper-slide" >
                     <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
                   </div>
-                  <div class="swiper-slide" data-hash="slide6">
+                  <div class="swiper-slide" >
                     <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
                   </div>
-                  <div class="swiper-slide" data-hash="slide7">
+                  <div class="swiper-slide" >
                     <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
                   </div>
-                  <div class="swiper-slide" data-hash="slide8">
+                  <div class="swiper-slide" >
                     <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
                   </div>
-                  <div class="swiper-slide" data-hash="slide9">
+                  <div class="swiper-slide" >
                     <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
                   </div>
-                  <div class="swiper-slide" data-hash="slide10">
+                  <div class="swiper-slide" >
                     <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
                   </div>
                 </div>
@@ -188,6 +188,25 @@
   <script>
     var numItems = $('.mySwiper2 .swiper-slide').length;
     var getDeviceWidth = $(window).width();
+
+    function applyWrapper() {
+      var contentArray = $('.m-select');
+      $(contentArray).each(function(index, value) {
+        var slideHref = '#slide' + index;
+        console.log(slideHref);
+        $(this).wrapAll('<a class="moreInfo" href="' + slideHref + '"></a>');
+      });
+      return;
+    }
+
+    function applyAttribute() {
+      var slideWrapper = $('.swipper-content-wrapper .swiper-slide');
+      $(slideWrapper).each(function(index, value) {
+        var slideHref = 'slide' + index;
+        $(this).attr('data-hash', slideHref);
+      });
+      return;
+    }
 
     function enableSwiper() {
     // Removing the logic for data hash 
@@ -212,7 +231,9 @@
     });
     }
 
-    function swiperMobile() {
+    async function swiperMobile() {
+      await applyWrapper();
+      await applyAttribute();
     var swiper = new Swiper(".swipper-content-wrapper", {
         spaceBetween: 30,
         centeredSlides: true,
