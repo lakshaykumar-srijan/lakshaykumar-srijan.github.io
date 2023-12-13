@@ -91,6 +91,36 @@
       height: 100%;
       object-fit: cover;
     }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      background: white;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown.active .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-item {
+      padding: 12px;
+      text-decoration: none;
+      display: block;
+      color: #333;
+    }
+
+
   </style>
 </head>
 
@@ -98,7 +128,7 @@
   <!-- Swiper -->
   <div class="container">
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 another-random-div">
             <div thumbsSlider="" class="swiper swiper-controller mySwiper">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
@@ -189,12 +219,36 @@
     var numItems = $('.mySwiper2 .swiper-slide').length;
     var getDeviceWidth = $(window).width();
 
-    function applyWrapper() {
-      var contentArray = $('.m-select');
-      $(contentArray).each(function(index, value) {
-        var slideHref = '#slide' + index;
-        console.log(slideHref);
-        $(this).wrapAll('<a class="moreInfo" href="' + slideHref + '"></a>');
+    function createItemDropdown() {
+      $('.swiper-controller').remove();
+      var dropdown = $('<div class="dropdown"></div>');
+      var span = $('<span class="m-select">Slide 1</span>');
+      var dropdownContent = $('<div class="dropdown-content"></div>');
+
+      // Append the dropdown items
+      for (var i = 1; i <= 10; i++) {
+        var slideText = 'Slide ' + i;
+        var dropdownItem = $('<a class="moreInfo dropdown-item" href="#slide' + i + '"><h2>' + slideText + '</h2></a>');
+        dropdownContent.append(dropdownItem);
+      }
+
+      $('.another-random-div').append(dropdown.append(span).append(dropdownContent));
+
+      $(".dropdown").click(function() {
+        $(this).toggleClass("active");
+      });
+
+      $(document).on("click", function(event) {
+        if (!$(event.target).closest(".dropdown").length) {
+          $(".dropdown").removeClass("active");
+        }
+      });
+
+      $(".dropdown-item").click(function(event) {
+        event.stopPropagation();
+        var selectedText = $(this).text().trim();
+        $(".m-select").text(selectedText);
+        $(".dropdown").removeClass("active");
       });
       return;
     }
@@ -232,7 +286,7 @@
     }
 
     async function swiperMobile() {
-      await applyWrapper();
+      await createItemDropdown();
       await applyAttribute();
     var swiper = new Swiper(".swipper-content-wrapper", {
         spaceBetween: 30,
